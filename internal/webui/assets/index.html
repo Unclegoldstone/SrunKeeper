@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SrunKeeper - 控制台</title><link rel="icon" type="image/png" href="/logo.png"><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body><div class="workspace">
+<aside class="sidebar" aria-label="设置侧边栏">
+<div class="identity"><img class="brand" src="/logo.png" alt="SrunKeeper logo" width="42" height="42"><div><strong>SrunKeeper</strong><span>重连助手</span></div></div>
+<div class="sidebar-intro"><h1>设置</h1><p>保存配置，再启动右侧服务。</p></div>
+<form id="accounts-form" class="settings-card"><div class="section-title"><h2>账号</h2><button type="button" class="secondary small" id="add-account">＋ 添加</button></div><p>已有密码留空保留。账号可关联多台设备。</p><div id="accounts"></div><button type="submit" id="save-accounts" class="save-button">保存账号</button></form>
+<form id="devices-form" class="settings-card"><div class="section-title"><h2>设备</h2><button type="button" class="secondary small" id="add-device">＋ 添加</button></div><p>手动填写 IP，并选择已保存的账号。</p><div id="devices"></div><button type="submit" id="save-devices" class="save-button">保存设备</button></form>
+<form id="settings" class="settings-card"><h2>学校与系统</h2><div class="settings-fields"><label>学校描述<input id="school-description" placeholder="学校名称或备注"></label><label>认证服务器地址<input id="host" required placeholder="http://192.168.112.30"></label><div class="field-pair"><label>接入标识 ac_id<input id="acid" required></label><label>检测间隔（秒）<input id="seconds" type="number" min="1" max="86400" required></label></div><input id="n" type="hidden"><input id="type" type="hidden"><input id="enc" type="hidden"></div><button type="submit" id="save-settings" class="save-button">保存学校与系统设置</button></form>
+<p class="sidebar-foot">配置仅保存到本机。各区域独立保存。</p>
+</aside>
+<main class="operations" aria-label="服务与设备日志">
+<header><div><div class="eyebrow">SERVICE CONSOLE</div><h1>服务控制台</h1><p>统一检测，自动重连。每台设备的运行记录分别展示。</p></div><span class="badge" id="service">连接中</span></header>
+<section class="control-panel"><div><h2>自动认证服务</h2><p id="service-help">保存设备后，点击启动服务。</p></div><div class="controls"><button id="start" type="button">▶ 启动服务</button><button id="stop" type="button" class="danger" disabled>■ 停止服务</button><button id="check" type="button" class="secondary" disabled>立即检测</button></div></section>
+<div id="notice" role="status" aria-live="polite"></div>
+<section class="summary"><div><span>管理设备</span><strong id="total">0</strong></div><div><span>认证在线</span><strong id="online">0</strong></div><div><span>检测间隔</span><strong id="interval">—</strong></div></section>
+<div class="logs-heading"><div><h2>设备日志</h2><p>每台设备保留最近 100 条记录，自动刷新。</p></div><span class="live-label">● 本机实时状态</span></div>
+<section id="device-logs" aria-label="按设备分组的日志"></section>
+<footer>关闭页面不影响已启动的服务。停止认证请点击“停止服务”；退出程序请在终端按 Ctrl+C。</footer>
+</main></div></body></html>
